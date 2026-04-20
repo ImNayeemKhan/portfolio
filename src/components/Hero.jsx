@@ -6,6 +6,15 @@ const Hero = () => {
     document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
   };
 
+  const downloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Nayeem_Islam_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -111,16 +120,15 @@ const Hero = () => {
             Get In Touch
           </motion.a>
 
-          <motion.a
-            href="/resume.pdf"
-            download
+          <motion.button
+            onClick={downloadResume}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="btn-secondary flex items-center gap-2"
           >
             <Download size={20} />
             Download Resume
-          </motion.a>
+          </motion.button>
         </motion.div>
 
         {/* Skills highlight */}
